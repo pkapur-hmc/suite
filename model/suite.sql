@@ -7,9 +7,7 @@ CREATE TABLE Student {
   name VARCHAR(256) NOT NULL,
   year INT UNSIGNED NOT NULL,
   room INT UNSIGNED NOT NULL,
-  roommate VARCHAR(256),
   FOREIGN KEY (room) REFERENCES Room(room_id),
-  FOREIGN KEY (roommate) REFERENCES Student(stud_id),
   FOREIGN KEY (stud_id) REFERENCES Suite(suite_id)
 }
 
@@ -32,22 +30,15 @@ CREATE TABLE Suite {
 
 CREATE TABLE Status {
   status_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  status_temp VARCHAR(256) NOT NULL,
+  status_desc VARCHAR(256) NOT NULL,
   FOREIGN KEY (status_id) REFERENCES Suite(student_id)
+  FOREIGN KEY (status_desc) REFERENCES StatusList(userStatus_id)
 }
 
-INSERT INTO Status {
-  status_desc
+CREATE TABLE StatusList {
+  userStatus_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(256) NOT NULL,
 }
 
-VALUES {
-  "Active"
-  "Idle"
-  "Do Not Disturb"
-  "Eating"
-  "Working"
-  "Sleeping"
-  "Exercising"
-  -- "Custom"
-  -- Want to make a custom variable with user input, but not sure how
-}
+INSERT INTO StatusList (name)
+VALUES ('Active', 'Idle', 'Do Not Disturb', 'Eating', 'Working', 'Sleeping', 'Exercising')
