@@ -5,18 +5,11 @@ USE SUITE;
 CREATE TABLE Student {
   stud_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(256) NOT NULL,
+  status VARCHAR(256) NOT NULL,
   year INT UNSIGNED NOT NULL,
   room INT UNSIGNED NOT NULL,
-  FOREIGN KEY (room) REFERENCES Room(room_id),
-  FOREIGN KEY (stud_id) REFERENCES Suite(suite_id)
-}
-
-CREATE TABLE Room {
-  room_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  room_num INT UNSIGNED NOT NULL,
-  residents INT UNSIGNED NOT NULL,
   suite INT UNSIGNED NOT NULL,
-  FOREIGN KEY (residents) REFERENCES Student(stud_id),
+  FOREIGN KEY (status) REFERENCES Status(status_id),
   FOREIGN KEY (suite) REFERENCES Suite(suite_id)
 }
 
@@ -24,20 +17,18 @@ CREATE TABLE Suite {
   suite_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(256) NOT NULL,
   suite_num INT UNSIGNED NOT NULL,
-  rooms INT UNSIGNED NOT NULL,
-  FOREIGN KEY (rooms) REFERENCES Room(room_id)
+  student VARCHAR(256) NOT NULL,
+  FOREIGN KEY (student) REFERENCES Student(stud_id)
 }
 
 CREATE TABLE Status {
   status_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  status_desc VARCHAR(256) NOT NULL,
-  FOREIGN KEY (status_id) REFERENCES Suite(student_id)
-  FOREIGN KEY (status_desc) REFERENCES StatusList(userStatus_id)
+  FOREIGN KEY (status_id) REFERENCES StatusList(userStatus_id)
 }
 
 CREATE TABLE StatusList {
   userStatus_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(256) NOT NULL,
+  name VARCHAR(256) NOT NULL
 }
 
 INSERT INTO StatusList (name)
