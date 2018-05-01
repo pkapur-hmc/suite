@@ -4,15 +4,15 @@
 
   class Controller {
     public $model;
- 
-    public function __construct()  {  
+
+    public function __construct()  {
       $this->model = new Model();
-    } 
+    }
 
     public function invoke() {
-      
-      $result = $this->model->getlogin();  
-  
+
+      $result = $this->model->getlogin();
+
       if($result == 'login') {
         include_once( 'view/Afterlogin.php');
       }
