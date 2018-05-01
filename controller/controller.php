@@ -1,6 +1,12 @@
 <?php
-    session_start();
+  session_start();
   include_once("model/model.php");
+
+/*
+  if (session_status() != PHP_SESSION_ACTIVE) {
+  session_start();
+  }
+*/
 
   class Controller {
     public $model;
@@ -15,6 +21,8 @@
 
       if($result == 'login') {
         include_once( 'view/Afterlogin.php');
+        // we don't have a Afterlogin.php file
+        // should this be our home file instead?
       }
       else {
         include_once( 'view/login.php');
