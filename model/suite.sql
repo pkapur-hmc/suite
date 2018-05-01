@@ -32,4 +32,4 @@ CREATE TABLE StatusList {
 }
 
 INSERT INTO StatusList (name)
-VALUES ('Active', 'Idle', 'Do Not Disturb', 'Eating', 'Working', 'Sleeping', 'Exercising')
+VALUES ('Inside suite (free)', 'Inside suite (busy)', 'Outside suite (free)', 'Outside suite (busy)')
