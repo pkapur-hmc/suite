@@ -1,6 +1,9 @@
 <?php
 
+session_start();
+require('model/dbconn.php');
 
+$db = connect_to_db("SUITE");
 
 
 
