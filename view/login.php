@@ -12,6 +12,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 }
 
+$emailErr = $passwordErr = "";
+$email = $password = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (empty($_POST["email"])) {
+      $emailErr = "Please enter a valid email";
+    }
+
+    else {
+      $email = ($_POST["email"]);
+    }
+
+    if (empty($_POST["password"])) {
+      $passwordErr = "Please enter a password";
+    }
+
+    else {
+      $password = ($_POST["password"]);
+    }
+
+    if ($emailErr == "" && $passwordErr == "") {
+
+      $query = "SELECT userID FROM User where email=? AND password=?";
+      $selectUser = $connection -> prepare($query);
+      echo $connection->error;
+      $hashedPassword = crypt($password,"hashbrown");
+      $selectUser -> bind_param("ss", $email, $hashedPassword);
+      mysqli_stmt_execute($selectUser);
+      $selectUser -> bind_result($userID);
+
+        if ($selectUser -> fetch()) {
+            $_SESSION['userID'] = $userID;
+            $_SESSION['email'] = $email;
+            mysqli_stmt_close($selectUser);
+            header("Location: viewMessages.php");
+        }
+        else {
+            echo "<p class='error'>Email and/or password is incorrect</p>";
+        }
+
+
 
 
 ?>
