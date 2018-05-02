@@ -24,7 +24,19 @@
         include_once('view/home.php');
         // we don't have a Afterlogin.php file
         // should this be our home file instead?
+
+        $email = $_POST["email"];
+        $passowrd = $_POST["password"];
+
+        if(preg_match('/invalid/',$result)) {
+          echo "$result";
+        }
+
+        else {
+          $shoppingCart = $this->model->getCart();
+          $this->view->renderLoginPage($login);
       }
+
       else {
         include_once('view/login.php');
       }
