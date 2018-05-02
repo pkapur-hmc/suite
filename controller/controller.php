@@ -13,6 +13,7 @@
 
     public function __construct()  {
       $this->model = new Model();
+      $this->view = new View($this->model);
     }
 
     public function invoke() {
@@ -20,12 +21,12 @@
       $result = $this->model->getlogin();
 
       if($result == 'login') {
-        include_once( 'view/Afterlogin.php');
+        include_once('view/home.php');
         // we don't have a Afterlogin.php file
         // should this be our home file instead?
       }
       else {
-        include_once( 'view/login.php');
+        include_once('view/login.php');
       }
     }
 
