@@ -13,16 +13,16 @@ class View {
   //   	include_once("orderForm.php");
 	// }
 
-	public function renderLoginPage {
-
+	public function renderLoginPage() {
+		include_once("login.php");
 	}
 
-	public function renderHomePage {
-
+	public function renderHomePage($user) {
+		include_once("home.php");
 	}
 
-	public function registerPage {
-
+	public function registerPage() {
+		include_once("register.php");
 	}
 }
 

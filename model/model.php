@@ -1,7 +1,11 @@
 <?php
-include_once(suite.sql);
+require('dbconn.php');
+
+
+
 
 class Model {
+	$db = connect_to_db("SUITE");
 
 	public function getlogin() {
  		// here goes some hardcoded values to simulate the database
