@@ -32,6 +32,10 @@
                             <input type="room" class="form-control" id="room">
                         </div>
                         <div class="form-group">
+                            <label for="suite">Suite</label>
+                            <input type="suite" class="form-control" id="suite">
+                        </div>
+                        <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email">
                         </div>

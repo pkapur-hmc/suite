@@ -17,11 +17,11 @@ class View {
 		include_once("login.php");
 	}
 
-	public function renderHomePage($user) {
+	public function renderHomePage($email) {
 		include_once("home.php");
 	}
 
-	public function registerPage() {
+	public function renderRegisterPage() {
 		include_once("register.php");
 	}
 }
